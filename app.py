@@ -204,19 +204,23 @@ if uploaded_file is not None:
                         comparison.to_file("Report-Differenze.html")
                     except Exception as e:
                         print(e)
-                        pass
                         
-            #create zip file wit zipfile 
-            zipObj = zipfile.ZipFile('DatiSintetici_IntelligenzaArtificialeItalia.zip', 'w')
-            zipObj.write("Modello_Allenato_"+modello+ "_IntelligenzaArtificialeItalia.pkl")
-            zipObj.write("DatiGenerati_"+modello+ "_IntelligenzaArtificialeItalia.csv")
-            zipObj.write("DatiSintetici+Originali_"+modello+ "_IntelligenzaArtificialeItalia.csv")
-            for filename in os.listdir("out"):
-                zipObj.write("out/"+filename)
-            zipObj.write("Report Dati Originali.html")
-            zipObj.write("Report Dati Sintetici.html")
-            zipObj.write("Report Dati Sintetici + Dati Originali.html")
-            zipObj.close()
+            
+            try:           
+                #create zip file wit zipfile 
+                zipObj = zipfile.ZipFile('DatiSintetici_IntelligenzaArtificialeItalia.zip', 'w')
+                zipObj.write("Modello_Allenato_"+modello+ "_IntelligenzaArtificialeItalia.pkl")
+                zipObj.write("DatiGenerati_"+modello+ "_IntelligenzaArtificialeItalia.csv")
+                zipObj.write("DatiSintetici+Originali_"+modello+ "_IntelligenzaArtificialeItalia.csv")
+                for filename in os.listdir("out"):
+                    zipObj.write("out/"+filename)
+                zipObj.write("Report Dati Originali.html")
+                zipObj.write("Report Dati Sintetici.html")
+                zipObj.write("Report Dati Sintetici + Dati Originali.html")
+                zipObj.close()
+            except Exception as e:
+                print(e)
+                
             
             #download zip file with st.download_button
             st.download_button(
