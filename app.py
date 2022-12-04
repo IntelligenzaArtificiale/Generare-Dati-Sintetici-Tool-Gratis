@@ -217,6 +217,7 @@ if uploaded_file is not None:
                 zipObj.write("Report Dati Originali.html")
                 zipObj.write("Report Dati Sintetici.html")
                 zipObj.write("Report Dati Sintetici + Dati Originali.html")
+                zipObj.write("Report-Differenze.html")
                 zipObj.close()
             except Exception as e:
                 print(e)
