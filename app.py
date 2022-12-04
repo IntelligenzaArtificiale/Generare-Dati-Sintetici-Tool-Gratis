@@ -21,6 +21,12 @@ uploaded_file = st.file_uploader("📤Carica i dati originali 📤", type=['csv'
 
 if uploaded_file is not None:
     dataset = pd.read_csv(uploaded_file)
+    #if dataset contains null or nan or empty or corrupted values drop them
+    if dataset.isnull().values.any() or dataset.isna().values.any() or dataset.empty or dataset.isin(['']).values.any():
+        dataset = dataset.dropna()
+        dataset = dataset.replace('', np.nan)
+        dataset = dataset.dropna()
+        st.write("🚨 I dati originali contengono valori nulli, nan, vuoti o corrotti, sono stati eliminati 🚨")
     colonne = list(dataset.columns)
     options = st.multiselect("1️⃣ Seleziona le colonne che vuoi usare..",colonne,colonne)
     dataset = dataset[options]
@@ -192,10 +198,14 @@ if uploaded_file is not None:
                         
             with st.spinner("🔬⚗️Genero il report delle differze tra i dataset...🤖"):
                 with st.expander("🔍 VISUALIZZA il report delle differze tra i dataset 📊📚"):
-                    comparison = compare([pr, pr2, pr3])
-                    st_profile_report(comparison)
-                    comparison.to_file("Report-Differenze.html")
-            
+                    try:
+                        comparison = compare([pr, pr2, pr3])
+                        st_profile_report(comparison)
+                        comparison.to_file("Report-Differenze.html")
+                    except Exception as e:
+                        print(e)
+                        pass
+                        
             #create zip file wit zipfile 
             zipObj = zipfile.ZipFile('DatiSintetici_IntelligenzaArtificialeItalia.zip', 'w')
             zipObj.write("Modello_Allenato_"+modello+ "_IntelligenzaArtificialeItalia.pkl")
