@@ -1,6 +1,7 @@
 streamlit
 sdv
 pandas
+ipython
 table_evaluator
 streamlit_pandas_profiling
 pandas_profiling
