@@ -1,8 +1,7 @@
-streamlit
-sdv
-pandas
-ipython
-table_evaluator
-streamlit_pandas_profiling
-pandas_profiling
-streamlit-aggrid
+numpy==1.23.2
+pandas==1.4.2
+pandas_profiling==3.5.0
+sdv==0.17.1
+streamlit==1.11.0
+streamlit_pandas_profiling==0.1.3
+table_evaluator==1.4.2
