@@ -1,3 +1,4 @@
+import zipfile
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -5,7 +6,6 @@ from sdv.evaluation import evaluate
 from table_evaluator import load_data, TableEvaluator
 from sdv.tabular import CTGAN, TVAE, CopulaGAN, GaussianCopula
 from st_aggrid import AgGrid, DataReturnMode, GridUpdateMode, GridOptionsBuilder, JsCode
-import zipfile 
 
 st.set_page_config(page_title="Genera dati sintetici online", page_icon="📈", layout='wide', initial_sidebar_state='auto')
 

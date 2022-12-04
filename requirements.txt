@@ -1,6 +1,5 @@
 streamlit
 sdv
 pandas
-zipfile
 table_evaluator
 streamlit-aggrid
