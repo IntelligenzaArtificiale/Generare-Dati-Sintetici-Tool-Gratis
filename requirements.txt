@@ -3,5 +3,5 @@ pandas==1.4.2
 pandas_profiling==3.5.0
 sdv==0.17.1
 streamlit==1.11.0
-streamlit_pandas_profiling==0.1.3
+streamlit_pandas_profiling
 table_evaluator==1.4.2
