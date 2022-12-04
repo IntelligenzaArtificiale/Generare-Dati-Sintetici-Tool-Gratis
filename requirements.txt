@@ -2,4 +2,6 @@ streamlit
 sdv
 pandas
 table_evaluator
+streamlit_pandas_profiling
+pandas_profiling
 streamlit-aggrid
